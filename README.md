@@ -1,3 +1,7 @@
+# About this repo
+
+This repo is to be used for our school project. The zammad docker-compose will be reconfigured for our purpuses.
+
 # Welcome to Zammad
 
 Zammad is a web based open source helpdesk/ticket system with many features
