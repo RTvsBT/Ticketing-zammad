@@ -12,8 +12,7 @@ services:
       - HOLD_DAYS=10
       - POSTGRESQL_USER=${POSTGRES_USER}
       - POSTGRESQL_PASSWORD=${POSTGRES_PASS}
-    build: containers/zammad-postgresql
-#    image: ${IMAGE_REPO}:zammad-postgresql${VERSION}
+    image: ${IMAGE_REPO}:zammad-postgresql${VERSION}
     links:
       - zammad-postgresql
     restart: ${RESTART}
@@ -30,8 +29,7 @@ services:
     environment:
       - POSTGRESQL_USER=${POSTGRES_USER}
       - POSTGRESQL_PASS=${POSTGRES_PASS}      
-    build: containers/zammad
-#    image: ${IMAGE_REPO}:zammad${VERSION}
+    image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-postgresql
     restart: on-failure
@@ -49,8 +47,7 @@ services:
       - "80"
     depends_on:
       - zammad-railsserver
-    build: containers/zammad
-#    image: ${IMAGE_REPO}:zammad${VERSION}
+    image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-railsserver
       - zammad-websocket
@@ -62,8 +59,7 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASS}
-    build: containers/zammad-postgresql
-#    image: ${IMAGE_REPO}:zammad-postgresql${VERSION}
+    image: ${IMAGE_REPO}:zammad-postgresql${VERSION}
     restart: ${RESTART}
     volumes:
       - postgresql-data:/var/lib/postgresql/data
@@ -75,8 +71,7 @@ services:
     depends_on:
       - zammad-memcached
       - zammad-postgresql
-    build: containers/zammad
-#    image: ${IMAGE_REPO}:zammad${VERSION}
+    image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-memcached
       - zammad-postgresql
@@ -91,8 +86,7 @@ services:
     depends_on:
       - zammad-memcached
       - zammad-railsserver
-    build: containers/zammad
-#    image: ${IMAGE_REPO}:zammad${VERSION}
+    image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-memcached
       - zammad-postgresql
@@ -105,8 +99,7 @@ services:
     depends_on:
       - zammad-memcached
       - zammad-railsserver
-    build: containers/zammad
-#    image: ${IMAGE_REPO}:zammad${VERSION}
+    image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-postgresql
       - zammad-memcached
