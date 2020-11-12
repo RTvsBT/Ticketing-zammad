@@ -28,7 +28,9 @@ services:
       - zammad-postgresql
     environment:
       - POSTGRESQL_USER=${POSTGRES_USER}
-      - POSTGRESQL_PASS=${POSTGRES_PASS}      
+      - POSTGRESQL_PASS=${POSTGRES_PASS}   
+      - ELASTICSEARCH_HOST=elk.cs-workshop.lab
+      - ELASTICSEARCH_ENABLED=false
     image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-postgresql
