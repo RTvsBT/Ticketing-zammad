@@ -19,7 +19,7 @@ ENV ZAMMAD_USER zammad
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
 # install zammad
-COPY setup.sh /tmp
+COPY containers/zammad/setup.sh /tmp
 RUN chmod +x /tmp/setup.sh; \
     /tmp/setup.sh install
 
