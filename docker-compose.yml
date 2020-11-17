@@ -23,7 +23,7 @@ services:
   zammad-init:
     command: ["zammad-init"]
     extra_hosts:
-      - "elk.cs-workshop.lab:192.168.1.10"
+      - "elk.cs-workshop.lab:192.168.2.181"
     depends_on:
       - zammad-postgresql
     environment:
@@ -49,6 +49,8 @@ services:
       - "80"
     depends_on:
       - zammad-railsserver
+    environment: 
+      - NGINX_SERVER_NAME=zammad.cs-workshop.lab
     image: ${IMAGE_REPO}:zammad${VERSION}
     links:
       - zammad-railsserver
@@ -69,7 +71,7 @@ services:
   zammad-railsserver:
     command: ["zammad-railsserver"]
     extra_hosts:
-      - "elk.cs-workshop.lab:192.168.1.10"
+      - "elk.cs-workshop.lab:192.168.2.181"
     depends_on:
       - zammad-memcached
       - zammad-postgresql
@@ -84,7 +86,7 @@ services:
   zammad-scheduler:
     command: ["zammad-scheduler"]
     extra_hosts:
-      - "elk.cs-workshop.lab:192.168.1.10"
+      - "elk.cs-workshop.lab:192.168.2.181"
     depends_on:
       - zammad-memcached
       - zammad-railsserver
