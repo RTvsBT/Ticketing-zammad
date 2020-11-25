@@ -22,14 +22,11 @@ services:
 
   zammad-init:
     command: ["zammad-init"]
-    extra_hosts:
-      - "elk.cs-workshop.lab:192.168.2.181"
     depends_on:
       - zammad-postgresql
     environment:
       - POSTGRESQL_USER=${POSTGRES_USER}
-      - POSTGRESQL_PASS=${POSTGRES_PASS}   
-      - ELASTICSEARCH_HOST=elk.cs-workshop.lab
+      - POSTGRESQL_PASS=${POSTGRES_PASS}
       - ELASTICSEARCH_ENABLED=false
     image: ${IMAGE_REPO}:zammad${VERSION}
     links:
@@ -70,8 +67,6 @@ services:
 
   zammad-railsserver:
     command: ["zammad-railsserver"]
-    extra_hosts:
-      - "elk.cs-workshop.lab:192.168.2.181"
     depends_on:
       - zammad-memcached
       - zammad-postgresql
@@ -85,8 +80,6 @@ services:
 
   zammad-scheduler:
     command: ["zammad-scheduler"]
-    extra_hosts:
-      - "elk.cs-workshop.lab:192.168.2.181"
     depends_on:
       - zammad-memcached
       - zammad-railsserver
