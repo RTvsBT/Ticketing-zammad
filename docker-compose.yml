@@ -43,7 +43,7 @@ services:
   zammad-nginx:
     command: ["zammad-nginx"]
     ports:
-      - 80
+      - 80:80
     depends_on:
       - zammad-railsserver
     environment: 
